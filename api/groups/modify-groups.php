@@ -1,9 +1,13 @@
 <?php
 
 function get_existing_group($id): array {
+    if (!is_numeric($id)) {
+        return array();
+    }
+
     $conn = db_connect();
 
-    $result = $conn->query("SELECT * FROM `groups` WHERE grp_id = '$id'");
+    $result = $conn->query("SELECT * FROM groups WHERE grp_id = '$id'");
     $row = $result->fetch_assoc();
 
     return array(
@@ -19,21 +23,20 @@ function update_existing_group($id, $name, $team): void {
         return;
     }
 
-    // Prevent SQL injection with $name and $team
-    $name = $conn->real_escape_string($name);
-    $team = $conn->real_escape_string($team);
 
-    $conn->query("UPDATE `groups` SET grp_name = '$name', grp_tm_id = '$team' WHERE grp_id = '$id'");
+    $query = $conn->prepare("UPDATE groups SET grp_name = ?, grp_tm_id = ? WHERE grp_id = ?");
+    $query->bind_param("sii", $name, $team, $id);
+    $query->execute();
+    $query->close();
 }
 
 function create_new_group($name, $team): void {
     $conn = db_connect();
 
-    // Prevent SQL injection with $name and $team
-    $name = $conn->real_escape_string($name);
-    $team = $conn->real_escape_string($team);
-
-    $conn->query("INSERT INTO `groups` (grp_name, grp_tm_id) VALUES ('$name', '$team')");
+    $query = $conn->prepare("INSERT INTO groups (grp_name, grp_tm_id) VALUES (?, ?)");
+    $query->bind_param("si", $name, $team);
+    $query->execute();
+    $query->close();
 }
 
 function delete_existing_group($id): void {

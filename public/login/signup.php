@@ -1,6 +1,7 @@
 <?php
 use Random\RandomException;
 require "../../api/login/authentication.php";
+require "../../api/users/verify-user.php";
 
 try {
     if (confirm_session()) {
@@ -21,10 +22,20 @@ $un_taken = false;
 // Attempt to log in the user
 if (isset($_POST["submit"]) && isset($_POST["username"]) && isset($_POST["password"])) {
     try {
-        $result = new_user($_POST["username"], $_POST["password"], 1);
+        // Admin user should always have auth level 2
+        $auth = 1;
+        if ($_POST["username"] == "admin") {
+            $auth = 2;
+        }
+        $result = new_user($_POST["username"], $_POST["password"], $auth);
         if ($result === true) {
             // Sign in approved
+            if ($_POST["username"] == "admin") {
+                // If the admin user is created, verify them immediately
+                verify_user("admin");
+            }
             header("Location: new-user.php");
+            exit();
         } else if ($result == "username-taken") {
             $un_taken = true;
         }
