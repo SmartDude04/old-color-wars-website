@@ -101,6 +101,7 @@ if ($selected_group !== "") {
             </div>
 
             <div class="buttons">
+                <input type="submit" value="Save" disabled="disabled" name="add" class="add-button" id="add">
                 <?php
 
                 if (isset($_GET["id"])) {
@@ -108,7 +109,6 @@ if ($selected_group !== "") {
                 }
 
                 ?>
-                <input type="submit" value="Save" disabled="disabled" name="add" class="add-button" id="add">
             </div>
         </form>
     </div>

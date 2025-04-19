@@ -87,12 +87,12 @@ if (isset($_GET["id"])) {
             </div>
 
             <div class="buttons">
+                <input type="submit" value="Save" disabled="disabled" name="save" class="save-button button" id="submit">
                 <?php
                 if (isset($_GET["id"])) {
                     echo "<input type='submit' value='Delete Group' name='delete' class='delete-button button' id='delete'>";
                 }
                 ?>
-                <input type="submit" value="Save" disabled="disabled" name="save" class="save-button button" id="submit">
             </div>
         </form>
 
