@@ -42,12 +42,15 @@
         margin-top: 64px;
         padding: 8px;
         font-size: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
     }
 
     .add-button {
         width: 30%;
         margin-top: 64px;
-        margin-right: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
         padding: 8px;
         font-size: 32px;
     }

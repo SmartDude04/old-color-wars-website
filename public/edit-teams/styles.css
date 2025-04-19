@@ -39,6 +39,8 @@
     }
 
     .delete-button {
+        margin-left: 16px;
+        margin-right: 16px;
         width: 30%;
         margin-top: 16px;
         padding: 8px;
@@ -46,7 +48,8 @@
     }
 
     .save-button {
-        margin-right: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
         width: 30%;
         margin-top: 16px;
         padding: 8px;
