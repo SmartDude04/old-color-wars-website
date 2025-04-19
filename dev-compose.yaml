@@ -1,0 +1,29 @@
+name: color-wars-site
+
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'dev'
+    volumes:
+      - database:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+  httpd:
+    build:
+      context: ./
+    depends_on:
+      - mariadb
+    environment:
+      DB_HOSTNAME: 'mariadb'
+      DB_PASSWORD: 'dev'
+    volumes:
+      - ./api:/var/www/api
+      - ./public:/var/www/html
+    ports:
+      - "3000:80"
+
+volumes:
+  database:
