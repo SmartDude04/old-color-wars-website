@@ -65,7 +65,7 @@ if (isset($_GET["id"])) {
     <div class="edit-view">
         <h1 class="header">Edit/Add Team</h1>
 
-        <form method="post" action="" class="edit-form">
+        <form method="post" action="" class="edit-form" onsubmit="return confirmDelete()">
             <div class="input-container">
                 <label for="team-name" class="input-label">Team Name</label>
                 <input type="text" value="<?php echo $name;?>" required name="team-name" id="team-name" class="input">
@@ -78,7 +78,7 @@ if (isset($_GET["id"])) {
             </div>
 
             <div class="buttons">
-                <input type="submit" value="Save" disabled="disabled" name="save" class="save-button button" id="submit">
+                <input type="submit" value="Save" disabled="disabled" name="save" class="save-button button" id="submit" onclick="clicked = 'Save'">
                 <?php
                 if (isset($_GET["id"])) {
                     echo "<input type='submit' value='Delete Team' name='delete' class='delete-button button' id='delete'>";

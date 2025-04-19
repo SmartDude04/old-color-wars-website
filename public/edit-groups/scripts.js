@@ -19,3 +19,10 @@ window.onload = function(){
         document.getElementById('submit').setAttribute("disabled", "disabled ");
     }
 }
+
+function confirmDelete() {
+    if (typeof clicked !== "undefined" && clicked === "Save") {
+        return true;
+    }
+    return confirm("Are you sure you want to delete this group? All points added to this group will be removed.");
+}

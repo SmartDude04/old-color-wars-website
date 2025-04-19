@@ -64,7 +64,7 @@ if ($selected_group !== "") {
     <div class="add-points-container">
         <h1 class="header">Add Points</h1>
 
-        <form method="post" action="" class="points-form">
+        <form method="post" action="" class="points-form" onsubmit="return confirmDelete();">
             <div class="selection-container">
                 <label for="points-team" class="points-label">Team</label>
                 <select name="points-team" id="points-team" required class="points-selector">
@@ -101,7 +101,7 @@ if ($selected_group !== "") {
             </div>
 
             <div class="buttons">
-                <input type="submit" value="Save" disabled="disabled" name="add" class="add-button" id="add">
+                <input type="submit" value="Save" disabled="disabled" name="add" class="add-button" id="add" onclick="clicked = 'Save'">
                 <?php
 
                 if (isset($_GET["id"])) {

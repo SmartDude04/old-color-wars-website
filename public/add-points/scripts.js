@@ -67,3 +67,10 @@ function getAuthCookie() {
     }
     return auth;
 }
+
+function confirmDelete() {
+    if (typeof clicked !== "undefined" && clicked === "Save") {
+        return true;
+    }
+    return confirm("Are you sure you want to delete this entry?");
+}
