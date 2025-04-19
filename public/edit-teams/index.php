@@ -15,11 +15,17 @@ try {
 
 // Check if the user has saved data; if so, update/create it in the database
 if (isset($_POST["save"]) && isset($_POST["team-name"]) && isset($_POST["team-hex"])) {
+    // Validate proper hex string
+    $hex = $_POST["team-hex"];
+    if (!ctype_xdigit(str_replace("#", "", $hex))) {
+        $hex = "000000";
+    }
+
     // Check if we are updating or creating
     if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
-        update_existing_team($_GET["id"], $_POST["team-name"], $_POST["team-hex"]);
+        update_existing_team($_GET["id"], $_POST["team-name"], $hex);
     } else {
-        create_new_team($_POST["team-name"], $_POST["team-hex"]);
+        create_new_team($_POST["team-name"], $hex);
     }
 
     header("location: ../index.php?page=teams");
