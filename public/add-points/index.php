@@ -48,7 +48,7 @@ if (isset($_GET["id"])) {
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Add Points &bull; CGC Color Wars</title>
+    <title><?php if (isset($_GET["id"])) {echo "Edit";} else {echo "Add";} ?> Points &bull; CGC Color Wars</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../css/fonts.css">
@@ -62,7 +62,13 @@ if ($selected_group !== "") {
 <script src="scripts.js" defer></script>
 <div class="container">
     <div class="add-points-container">
-        <h1 class="header">Add Points</h1>
+        <?php
+        if (isset($_GET["id"])) {
+            echo "<h1 class='header'>Edit Points</h1>";
+        } else {
+            echo "<h1 class='header'>Add Points</h1>";
+        }
+        ?>
 
         <form method="post" action="" class="points-form" onsubmit="return confirmDelete();">
             <div class="selection-container">
