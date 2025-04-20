@@ -31,7 +31,6 @@ function logout(): bool {
         'samesite' => 'Strict'
     ]);
 
-
     return true;
 }
 

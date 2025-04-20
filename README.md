@@ -15,6 +15,13 @@ Windows, but there shouldn't be a problem with other operating systems.
 
 ### Instructions
 1. Clone this repository to your machine
+2. Create a `passwords.env` file in this root directory
+   - Passwords need to be created for the following:
+     1. ADMIN_PASSWORD
+     2. DB_PASSWORD
+     3. MYSQL_ROOT_PASSWORD
+   - DB_PASSWORD and MYSQL_ROOT_PASSWORD should be the same
+   - Refer to `.env.example` for a sample format
 
 #### If using SSL (HTTPS):
 2. Obtain SSL (HTTPS) certificates

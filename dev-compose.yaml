@@ -5,8 +5,9 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 'dev'
       TZ: America/New_York
+    env_file:
+      - ./passwords.env
     volumes:
       - database:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
@@ -19,7 +20,12 @@ services:
       - mariadb
     environment:
       DB_HOSTNAME: 'mariadb'
-      DB_PASSWORD: 'dev'
+      # DB_PASSWORD variable must be set in a file called passwords.env
+      ADMIN_USERNAME: admin
+      # ADMIN_PASSWORD variable must be set in a file called passwords.env
+      AUTO_APPROVE_FIRST_USER: true
+    env_file:
+      - ./passwords.env
     volumes:
       - ./api:/var/www/api
       - ./public:/var/www/html
