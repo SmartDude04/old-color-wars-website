@@ -6,11 +6,11 @@ RUN docker-php-ext-install mysqli
 
 COPY ./public /var/www/html
 COPY ./api /var/www/api
-COPY entrypoint.sh /usr/local/bin
+COPY ./entrypoint.sh /usr/local/bin
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["apache2-foreground"]
 
 
