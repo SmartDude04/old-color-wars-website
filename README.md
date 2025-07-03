@@ -1,3 +1,8 @@
+# Note:
+
+Due to a new version of this site being written in JavaScript (Next.js), this project is **deprecated** and will no
+longer be maintained. 
+
 # **Color Wars**
 
 This site is a fully-featured [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) website created to streamline
